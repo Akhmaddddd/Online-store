@@ -1,0 +1,31 @@
+{% load static %}
+<div class="cart-row align-items-center">
+    <div style="flex:2"><img src="{{ item.product.get_photo }}" alt="" class="row-image"></div>
+    <div style="flex:2"><p>{{ item.product.title }}</p></div>
+    <div style="flex:1"><p>{{ item.product.price }}</p></div>
+
+    <div style="flex:1" class="d-flex"><p class="mt-1">{{ item.quantity }}</p>
+    {% if 'cart' in request.path %}
+
+        <div class="quantity mx-2">
+            {% if item.product.quantity > 0 %}
+            <a href="{% url 'to_cart' item.product.pk 'add' %}">
+                <img height="15px" src="https://static.vecteezy.com/system/resources/thumbnails/000/330/671/small/69_Up.jpg" alt="" data-action="'add" data-product="id" class="chg-quantity update-cart">
+            </a>
+            {% endif %}
+            <a href="{% url 'to_cart' item.product.pk 'remove' %}">
+                <img height="15px" src="https://t3.ftcdn.net/jpg/02/06/94/70/360_F_206947090_ujVMfvIu4vq6YczeDUIZ37AMCB1VnK6Y.jpg" alt="" data-action="remove" data-product="id" class="chg-quantity update-cart">
+            </a>
+
+
+        </div>
+
+
+    {% endif %}
+    </div>
+
+    <div style="flex:1"><p>{{ item.get_total_price }}</p></div>
+</div>
+
+
+

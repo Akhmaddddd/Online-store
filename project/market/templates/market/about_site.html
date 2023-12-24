@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+
+<section class="section about-section gray-bg mt-4 g-3" id="about">
+    <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
+                <div class="about-text go-to">
+                    <h3 class="dark-color">О сайте</h3>
+                    <h6 class="theme-color lead">UzMarket</h6>
+                    <p>Добро пожаловать в [Название магазина] – ваш универсальный онлайн магазин для удовлетворения всех
+                        ваших потребностей!
+
+                        Мы гордимся тем, что предоставляем широкий ассортимент качественных товаров по доступным ценам.
+                        Наш магазин создан для того, чтобы сделать ваше онлайн-шопинговое преживание простым, удобным и
+                        приятным.
+
+                        Наши ключевые особенности:
+
+                        Широкий выбор товаров: Мы предлагаем разнообразие товаров, от модной одежды и обуви до бытовой
+                        техники и электроники. У нас есть все, чтобы удовлетворить ваши желания и потребности.
+
+                        Качество гарантировано: Мы тщательно выбираем наших поставщиков и тестируем каждый товар, чтобы
+                        убедиться, что он соответствует высоким стандартам качества.
+
+                        Удобство и быстрота доставки: Мы ценим ваше время, поэтому предоставляем быструю и надежную
+                        доставку. Ваш заказ будет у вас в руках в самые короткие сроки.
+
+                        Привлекательные акции и скидки: Мы постоянно предлагаем различные акции и специальные
+                        предложения, чтобы сделать ваш шопинг еще более выгодным.
+
+                        Простой процесс заказа: Наш интерфейс дружелюбен и интуитивно понятен. Вы сможете легко найти
+                        нужные товары и оформить заказ всего за несколько кликов.
+
+                        Профессиональная поддержка: Наша команда поддержки всегда готова помочь вам с любыми вопросами
+                        или проблемами. Мы ценим каждого клиента и стремимся сделать ваше общение с нами максимально
+                        комфортным.
+
+                        Выбирайте [Название магазина] – ваш верный партнер в мире онлайн-шопинга. Мы делаем все
+                        возможное, чтобы сделать ваш опыт покупок приятным и удовлетворительным. Приятных покупок!
+                    </p>
+                    <div class="row about-list">
+                        <div class="col-md-6">
+                            <div class="media">
+                                <label>Дата создания</label>
+                                <p>11-го ноября 2022</p>
+                            </div>
+                            <div class="media">
+                                <label>Срок работы</label>
+                                <p>1 год</p>
+                            </div>
+                            <div class="media">
+                                <label>Нахождение</label>
+                                <p>Ташкент</p>
+                            </div>
+                            <div class="media">
+                                <label>Адресс отдела</label>
+                                <p>Мирзоулугбекский район 51</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="media">
+                                <label>Почта</label>
+                                <p>uzmarket@mail.com</p>
+                            </div>
+                            <div class="media">
+                                <label>Калл-центр</label>
+                                <p>+71 000 00 00</p>
+                            </div>
+                            <div class="media">
+                                <label>Наш инстаграмм</label>
+                                <p>https/instagram/uzmarket  (Вы знаете что это фейк)</p>
+                            </div>
+                            <div class="media">
+                                <label>Telegram</label>
+                                <p>https/telegram/uzmarket  (Вы знаете что это фейк) </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-avatar">
+                    <img height="500" width="450" src="https://cdn.leonardo.ai/users/e56151b7-030c-4528-9f04-cbc9086ca3c1/generations/4a43cbb6-ed86-4047-8357-02124e5a0c19/Leonardo_Diffusion_XL_the_logo_for_uzmarket_that_connected_wit_0.jpg" title="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="500" data-speed="500">{{ users }}</h6>
+                        <p class="m-0px font-w-600">Клиентов</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="150" data-speed="150">{{ products }}</h6>
+                        <p class="m-0px font-w-600">Продуктов</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="850" data-speed="850">{{ categories }}</h6>
+                        <p class="m-0px font-w-600">Категорий товара</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="190" data-speed="190">{{ comments }}</h6>
+                        <p class="m-0px font-w-600">Количество коментариев</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main %}
+

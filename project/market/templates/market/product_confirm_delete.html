@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+
+
+<div class="d-flex justify-content-center mt-4">
+
+    {% if request.user == product.author %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p class="text-dark">Вы действительно хотите удалить продукт "{{ product.title }}"</p>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-danger mx-5">Да удалить</button>
+            <a href="{{ product.get_absolute_url }}" class="btn btn-success">Нет</a>
+
+        </div>
+
+    </form>
+    {% else %}
+    <h3 class="text-dark">Зря,недооцениваете </h3>
+    {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock main %}

@@ -1,0 +1,18 @@
+{% load market_tags %}
+
+
+
+
+
+
+
+
+
+<nav class="nav nav-underline justify-content-between">
+    <a class="nav-item nav-link  text-dark link-info" href="{% url 'index'  %}">Все продукты</a>
+    {% get_categories as categories %}
+
+    {% for category in categories %}
+    <a class="nav-item nav-link  text-dark link-info" href="{{ category.get_absolute_url }}">{{category.title}}</a>
+    {% endfor %}
+</nav>

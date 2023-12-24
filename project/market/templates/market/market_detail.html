@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load market_tags %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="d-flex justify-content-between mt-4">
+
+
+    <div class="col-6 p-2 mt-2">
+        <div class="card">
+            <img src="{{ product.get_photo }}" alt="">
+        </div>
+
+    </div>
+
+    <div class="col-6 p-2 mt-2">
+        <div class="card">
+            {% if request.user.is_authenticated %}
+            {% get_favorite_products request.user as fav_products %}
+            {% endif %}
+            <div class="d-flex justify-content-between align-items-center  text-secondary p-2" style="border: none">
+
+                <h5 class="mx-2">Автор :
+                    <a class="link-info" href="{% url 'profile' product.author.pk %}">
+                        {{ product.author }}
+                    </a>
+                </h5>
+                {% if request.user != product.author and request.user.is_authenticated %}
+                <div>
+                    {% if product in fav_products %}
+                    <a href="{% url 'add_favorite' product.pk %}">
+                        <img height="20px"
+                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRin-QtHnD__FO0aW-NOb2T5RNjOK_Wua13gQ&usqp=CAU"
+                             alt="">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'add_favorite' product.pk %}">
+                        <img height="20px" src="https://deti-online.com/i/9/ed/7784/zoom/serdechko.jpg" alt="">
+                    </a>
+                    {% endif %}
+                </div>
+
+
+                {% endif %}
+                {% if request.user == product.author %}
+
+                <a href="{% url 'update' product.pk  %}" class="btn btn-outline-warning mx-5">Изменить</a>
+
+                <a href="{% url 'delete' product.pk  %}" class="btn btn-outline-danger mx-5">Удалить</a>
+                {% endif %}
+
+                <a href="{% url 'index' %}" class="btn btn-outline-success mx-5">Назад</a>
+
+            </div>
+            <div class="card-header  justify-content-between  text-secondary align-items-center" style="border: none">
+                <h1>{{product.title}}</h1>
+                <div class="d-flex product-info-item-unit col-mbs-12 col-mbl-3">
+                    <p>Продавец : {{ product.author }}</p>
+
+
+                </div>
+                <div class="product-info-item-unit col-mbs-12 col-mbl-3" style="display: flex;"><span>Доставка: 1 день бесплатно</span>
+
+                </div>
+
+            </div>
+            <div class="card-body text-secondary">
+                <div class=" justify-content-between align-items-center">
+                    <h2>Категория продукта : {{product.category}}</h2>
+                    <p>{{product.content|linebreaks}}</p>
+                    <div class="d-flex ">
+                        <p>Цена : </p>
+                        <h5>{{ product.price}}</h5></div>
+                        {% if product.quantity > 0 %}
+                        <a href="{% url 'to_cart' product.pk 'add' %}" class="btn btn-outline-warning mx-5 margin-left">Купить</a>
+                        {% else %}
+                        <a href="" class="btn btn-outline-warning mx-5 margin-left">Нет в налиии</a>
+                        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card mt-4 p-3 bg-dark border-light rounded text-light">
+            <form action="{% url 'save_comment' product.pk %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                {% if request.user.is_authenticated %}
+                <button class="btn btn-secondary" type="submit">Оставить коменатрий</button>
+                {% else %}
+                <h5>Чтобы оставить коментарий зарегистрируйтесь</h5>
+                <a href="{% url 'login' %}" class="btn btn-primary ">Войти</a>
+                <a href="{% url 'register' %}" class="btn btn-primary ">Зарегистрироваться</a>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+        {% for comment in comments %}
+        <div class="card mt-3 p-4 bg-dark border-light text-light">
+            <h3>{{ comment.user.username }}</h3>
+            <p class="small">{{ comment.created_at }}</p>
+            <p>{{ comment.text }} </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="row">
+    <h3 class=" text-dark  mt-4">Новинки</h3>
+    {% for product in products %}
+
+    <div class="card mb-3  mt-2 p-4" style="max-width: 650px;">
+
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if product.photo %}
+                <img src="{{ product.photo.url }}" class="img-fluid rounded-start" alt="...">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title |truncatechars:50}}</h5>
+                    <p class="card-text">{{ product.content |truncatechars:90}}</p>
+                    <p class="card-text"><small class="text-muted">{{ product.created_at }}</small></p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Посмотреть продукт</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    {% endblock main %}

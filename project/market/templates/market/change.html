@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-6 card p-4 bg-dark border-warning text-light">
+        <h3 class="text-center text-light">{{ title }}</h3>
+
+        {% if 'change_account' in request.path %}
+        <form action="{% url 'change_account' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ edit_account_form.as_p }}
+
+            <button type="submit" class="btn btn-success">Изменить аккаунт</button>
+
+        </form>
+        {% elif 'change_profile' in request.path %}
+        <form action="{% url 'change_profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ edit_profile_form.as_p }}
+
+            <button class="btn btn-success" type="submit">Изменить профиль</button>
+        </form>
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+
+{% endblock main %}

@@ -1,0 +1,43 @@
+*{
+    text-decorations: none ! important;
+}
+
+
+
+body{
+    background:secondary no-repeat;
+    background-size: cover;
+}
+
+
+
+.like {
+    position: absolute;
+    top: 21px;
+    right: 15px;
+    display: flex;
+    padding: 10px;
+    /* border-radius: 50%; */
+    /* filter: invert(1); */
+}
+
+.like::before {
+    content: '\f004';
+    font-family: 'heart';
+    color: #000;
+}
+
+.like_activate {
+    position: absolute;
+    top: 21px;
+    right: 15px;
+    display: flex;
+    padding: 10px;
+    font-size: 24px; /* Задайте желаемый размер иконы */
+    color: red; /* Задайте желаемый цвет иконы */
+}
+
+.like_activate::before {
+    content: '\2665'; /* Шестнадцатеричный код для символа сердца */
+}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+
+
+
+{% include 'market/components/_categories.html' %}
+
+
+
+<div class="d-flex justify-content-center mt-4 ">
+    <div class="col-12">
+
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for product in products %}
+            <div class="col">
+
+                {% include 'market/components/_product_card.html' %}
+
+
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+{% endblock main %}
+
+
+
+
